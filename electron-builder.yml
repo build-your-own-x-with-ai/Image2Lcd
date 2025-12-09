@@ -1,0 +1,26 @@
+appId: com.example.image2lcd
+productName: Image2LCD Converter
+directories:
+  output: dist-electron
+  buildResources: build
+files:
+  - dist/**/*
+  - dist-main/**/*
+  - node_modules/**/*
+  - package.json
+mac:
+  category: public.app-category.graphics-design
+  target:
+    - target: dmg
+      arch: [x64, arm64]
+win:
+  target:
+    - target: nsis
+      arch: [x64, ia32]
+linux:
+  target:
+    - target: AppImage
+      arch: [x64]
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true

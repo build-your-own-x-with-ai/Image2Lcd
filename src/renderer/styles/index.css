@@ -1,0 +1,335 @@
+@import './modal.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Microsoft YaHei', 'SimSun', 'Tahoma', sans-serif;
+  background: #ece9d8;
+  color: #000;
+  overflow: hidden;
+  font-size: 12px;
+}
+
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #ece9d8;
+}
+
+/* 工具栏 */
+.toolbar {
+  background: linear-gradient(to bottom, #f5f4f2 0%, #e8e6e3 100%);
+  border-bottom: 1px solid #8b8b8b;
+  padding: 4px 6px;
+  display: flex;
+  gap: 2px;
+  align-items: flex-start;
+}
+
+.toolbar-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 10px;
+  background: linear-gradient(to bottom, #ffffff 0%, #e0e0e0 100%);
+  border: 1px solid #a0a0a0;
+  border-radius: 3px;
+  cursor: pointer;
+  min-width: 60px;
+  box-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5) inset;
+}
+
+.toolbar-btn:hover:not(:disabled) {
+  background: linear-gradient(to bottom, #f0f0f0 0%, #d0d0d0 100%);
+}
+
+.toolbar-btn:active:not(:disabled) {
+  background: linear-gradient(to bottom, #d0d0d0 0%, #e0e0e0 100%);
+  box-shadow: -1px -1px 0px rgba(255, 255, 255, 0.5) inset, 1px 1px 2px rgba(0, 0, 0, 0.2) inset;
+}
+
+.toolbar-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.toolbar-icon {
+  font-size: 24px;
+  margin-bottom: 2px;
+}
+
+.toolbar-label {
+  font-size: 11px;
+  color: #000;
+}
+
+.toolbar-separator {
+  width: 1px;
+  height: 50px;
+  background: #a0a0a0;
+  margin: 0 4px;
+}
+
+/* 主布局 */
+.main-layout {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 220px 1fr 400px;
+  gap: 0;
+  overflow: hidden;
+  background: #ece9d8;
+}
+
+/* 左侧配置面板 */
+.left-config {
+  background: #ece9d8;
+  padding: 10px;
+  overflow-y: auto;
+  border-right: 1px solid #a0a0a0;
+}
+
+.scan-diagram {
+  background: #ffffff;
+  border: 1px solid #808080;
+  padding: 10px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: center;
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: #000;
+  font-weight: normal;
+}
+
+.form-group input[type='number'],
+.form-group input[type='text'],
+.form-group select {
+  width: 100%;
+  padding: 3px 5px;
+  border: 1px solid #808080;
+  background: #ffffff;
+  font-size: 12px;
+  font-family: 'Microsoft YaHei', sans-serif;
+}
+
+.form-group input[type='number']:focus,
+.form-group input[type='text']:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #0078d7;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.checkbox-group input[type='checkbox'] {
+  margin-right: 6px;
+}
+
+/* 中间预览区域 */
+.center-preview {
+  display: flex;
+  flex-direction: column;
+  background: #ece9d8;
+  overflow: hidden;
+}
+
+.preview-container {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 10px;
+  overflow: auto;
+}
+
+.preview-pane {
+  background: #ffffff;
+  border: 2px inset #808080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.preview-pane img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.preview-placeholder {
+  color: #808080;
+  font-size: 14px;
+}
+
+/* 底部控制区 */
+.bottom-controls {
+  background: #ece9d8;
+  padding: 10px;
+  border-top: 1px solid #a0a0a0;
+}
+
+.control-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.control-row label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+}
+
+.control-row select {
+  padding: 3px 5px;
+  border: 1px solid #808080;
+  background: #ffffff;
+  font-size: 12px;
+}
+
+.slider-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.slider-row label {
+  min-width: 60px;
+  font-size: 12px;
+}
+
+.slider-row input[type='range'] {
+  flex: 1;
+  height: 20px;
+}
+
+.button-row {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.button-row button {
+  padding: 4px 8px;
+  font-size: 11px;
+}
+
+/* 按钮样式 */
+.btn-primary,
+.btn-secondary {
+  padding: 5px 12px;
+  background: linear-gradient(to bottom, #ffffff 0%, #d8d8d8 100%);
+  color: #000;
+  border: 1px solid #808080;
+  border-radius: 2px;
+  font-size: 12px;
+  cursor: pointer;
+  box-shadow: 1px 1px 0px rgba(255, 255, 255, 0.5) inset;
+  font-family: 'Microsoft YaHei', sans-serif;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  background: linear-gradient(to bottom, #f0f0f0 0%, #c8c8c8 100%);
+}
+
+.btn-primary:active,
+.btn-secondary:active {
+  background: linear-gradient(to bottom, #c8c8c8 0%, #d8d8d8 100%);
+  box-shadow: -1px -1px 0px rgba(255, 255, 255, 0.5) inset, 1px 1px 2px rgba(0, 0, 0, 0.2) inset;
+}
+
+/* 右侧代码预览 */
+.right-code {
+  background: #ece9d8;
+  padding: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.code-preview {
+  flex: 1;
+  background: #ffffff;
+  border: 2px inset #808080;
+  padding: 8px;
+  overflow: auto;
+  font-family: 'Consolas', 'Courier New', monospace;
+}
+
+.code-preview pre {
+  color: #000;
+  font-size: 11px;
+  line-height: 1.4;
+  margin: 0;
+  white-space: pre;
+  word-wrap: normal;
+}
+
+/* 状态栏 */
+.statusbar {
+  background: #ece9d8;
+  border-top: 1px solid #808080;
+  padding: 3px 10px;
+  font-size: 11px;
+  color: #000;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ece9d8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #ffffff 0%, #d8d8d8 100%);
+  border: 1px solid #808080;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #f0f0f0 0%, #c8c8c8 100%);
+}
+
+::-webkit-scrollbar-button {
+  background: linear-gradient(to bottom, #ffffff 0%, #d8d8d8 100%);
+  border: 1px solid #808080;
+  height: 16px;
+  width: 16px;
+}
